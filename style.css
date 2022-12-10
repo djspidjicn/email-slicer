@@ -1,0 +1,409 @@
+*{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: #e2e0e0;
+}
+
+/*                                          Hero Image CSS                          */
+.advertise{
+    display: inline-block;
+    width: 360px;
+    color: white;
+    padding: 25px;
+    justify-content: center;
+}
+.p1{
+    font-style: italic;
+    font-size: 3vw;
+    font-weight: bolder;
+}
+.p2{
+    /* font-family: monospace; */
+    font-size: 2vw;
+    font-weight: normal;
+    font-style: italic;
+}
+.background{
+    background-image: url(/images/property_background.jpg);
+    /* background-repeat: no-repeat; */
+    /* background-position: center; */
+    background-size: cover;
+    position: relative;
+    border-radius: 15px 15px 0 0;
+}
+/* .searchbar{
+    height: 30vh;
+    width: 100%;
+    text-align: center;
+} */
+
+/* Log in button */
+.login-button{
+    margin: 12px;
+    padding: 5px 10px;
+    float: right;
+    border: .5mm groove #d3d1d1;
+    border-radius: 15px;
+    background-color: #286cca;
+    color: #d3d1d1;
+}
+.login-button:hover{
+    background-color: #d3d1d1;
+    color: #286cca;
+    cursor: pointer;
+}
+
+/*                                         Navigation Bar CSS                     */
+
+.navbar2{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0; 
+}
+.navbar ul,.navbar2 ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(42, 126, 243);
+    width: 100%;
+}
+.navbar ul li,.navbar2 ul li {
+    float: right;
+    /* border-right: 1px solid #bbb; */
+}
+.navbar ul li a,.navbar2 ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.navbar ul li a:hover ,.navbar2 ul li a:hover{
+    background-color: rgb(13, 91, 155);
+}
+.active {
+    background-color: #286cca;
+}
+.navbar ul{
+    background-color: black;
+    border-radius: 15px;
+    width: 35%;
+}
+.space1{
+    margin-bottom: 25px;
+}
+
+/*                                  Header and Footer                       */
+
+footer{
+    padding-top: 25px;
+    text-align: center;
+}
+
+.foot-grid1{
+    grid-area: f1;
+}
+.foot-grid2{
+    grid-area: f2;
+}
+.foot-grid3{
+    grid-area: f3;
+}
+
+.index-foot{
+    background-color: black;
+    color: #fff;
+}
+
+.fp,.fh{
+    text-align: left;
+    padding-left: 25px;
+}
+
+.foot-grid{
+    
+    display: grid;
+    grid-template-areas: 'f1 f2 f3';
+}
+
+#cop{
+    padding-bottom: 25px;
+}
+
+header{
+    text-align: left;
+    font-family: monospace;
+    color: white;
+    font-size: 3vw;
+    padding: 5px 10px;
+}
+
+@media (max-width: 1100px) {
+    .foot-grid{
+        display: grid;
+        grid-template-areas: 'f1 f2'
+        'f3 f3';
+    }
+}
+
+
+@media (max-width: 730px) {
+    .foot-grid{
+        display: grid;
+        grid-template-areas: 'f1 f1'
+        'f2 f2'
+        'f3 f3';
+    }
+}
+
+/*                                          Property Tiles                       */
+
+.property, .property1{
+    /* display: grid; */
+    width: 320px;
+    height: 240px;
+    background-color: #e2e0e0 ;
+    color: #286cca;
+    border: 1mm double #286cca;
+    border-radius: 15px;
+    justify-content: center;
+    margin: 25px;
+}
+
+.property{
+    height: 410px;
+    border: 1mm outset #286cca;
+}
+
+.property img,.property1 img{
+    padding: 10px;
+    width: 100%;
+    height: 170px;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.sellhead{
+    color: #286cca;
+    padding-left: 30px;
+}
+
+.clsell{
+    height: 300px;
+}
+
+.prop1{
+    grid-area: prop1;
+}
+.prop2{
+    grid-area: prop2;
+}
+.prop3{
+    grid-area: prop3;
+}
+.prop4{
+    grid-area: prop4;
+}
+.prop5{
+    grid-area: prop5;
+}
+.prop6{
+    grid-area: prop6;
+}
+.prop7{
+    grid-area: prop7;
+}
+.prop8{
+    grid-area: prop8;
+}
+.prop9{
+    grid-area: prop9;
+}
+
+.buyer{
+    display: grid;
+    grid-template-areas: 'prop1 prop2 prop3'
+    'prop4 prop5 prop6'
+    'prop7 prop8 prop9';
+}
+
+.renter{
+    display: grid;
+    grid-template-areas: 'prop1 prop2 prop3'
+    'prop4 prop5 prop6'
+    'prop7 prop8 prop9';
+}
+
+.seller{
+    display: grid;
+    grid-template-areas: 'prop1 prop2 prop3'
+    'prop4 prop5 prop6'
+    'prop7 prop8 prop9';
+}
+
+.property:hover{
+    box-shadow: 6px 6px 2px 1px rgba(0, 128, 255, 0.2);
+    cursor: pointer;
+    background-color: #d3d1d1;
+}
+
+.para-card{
+    padding: 5px;
+    padding-left: 15px;
+    /* text-align: center; */
+    font-weight: bold;
+}
+
+.para-head{
+    text-align: center;
+    font-weight: bold;
+}
+
+@media (max-width: 1100px) {
+    .buyer{
+        display: grid;
+        grid-template-areas: 'prop1 prop2'
+        'prop3 prop4'
+        'prop5 prop6'
+        'prop7 prop8'
+        'prop9 prop9';
+    }
+    
+    .renter{
+        display: grid;
+        grid-template-areas: 'prop1 prop2'
+        'prop3 prop4'
+        'prop5 prop6'
+        'prop7 prop8'
+        'prop9 prop9';
+    }
+    
+    .seller{
+        display: grid;
+        grid-template-areas: 'prop1 prop2'
+        'prop3 prop4'
+        'prop5 prop6'
+        'prop7 prop8'
+        'prop9 prop9';
+    }
+}
+
+
+@media (max-width: 730px) {
+    .buyer{
+        display: grid;
+        grid-template-areas: 'prop1 prop1'
+        'prop2 prop2'
+        'prop3 prop3'
+        'prop4 prop4'
+        'prop5 prop5'
+        'prop6 prop6'
+        'prop7 prop7'
+        'prop8 prop8'
+        'prop9 prop9';
+    }
+    
+    .renter{
+        display: grid;
+        grid-template-areas: 'prop1 prop1'
+        'prop2 prop2'
+        'prop3 prop3'
+        'prop4 prop4'
+        'prop5 prop5'
+        'prop6 prop6'
+        'prop7 prop7'
+        'prop8 prop8'
+        'prop9 prop9';
+    }
+    
+    .seller{
+        display: grid;
+        grid-template-areas: 'prop1 prop1'
+        'prop2 prop2'
+        'prop3 prop3'
+        'prop4 prop4'
+        'prop5 prop5'
+        'prop6 prop6'
+        'prop7 prop7'
+        'prop8 prop8'
+        'prop9 prop9';
+    }
+}
+
+
+
+
+
+
+/*                                                 Ttile Section                                    */
+
+.title{
+    background-color: #fcfafa;
+    color: #286cca;
+    border-radius: 0 0 15px 15px;
+    margin: 10px 0 65px 0;
+    text-align: center;
+    font-family: monospace;
+    font-size: larger;
+    font-weight: bold;
+    display: inline-block;
+    width: 100%;
+    height: 50px;
+}
+.option-bar{
+    display: grid;
+    grid-template-areas: 'prop1 prop2 prop3';
+}
+.txt{
+    text-align: center;
+    margin: 15px;
+    padding: 10px;
+}
+
+/*                                                  Buy, Sell, Rent Section                             */
+
+.buyer, .seller, .renter, .option-bar{
+    background-color: #d3d1d1;
+    border-radius: 15px;
+    margin-top: 15px;
+}
+
+.buy-section{
+    background-color: #fcfafa;
+    color: #286cca;
+    margin-top: 35px;
+    border-radius: 15px;
+    display: inline-block;
+    height: 80px;
+    width: 100%;
+    font-size: 150%;
+    text-align: center;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+#pform{
+    padding: 15px;
+}
+
+#pbutton{
+    padding: 5px;
+    color: #fff;
+    background-color: #286cca;
+    border-radius: 8px;
+}
+
+#myFile{
+    width: 40%;
+    margin: 5px;
+    color: #fff;
+    background-color: #286cca;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 35px;
+}
+

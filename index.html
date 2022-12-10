@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apna Ghar - Choose Your Own Ghar</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon/favicon1.ico">
+    <style>
+        .navbar2 ul {
+            border-radius: 0 0 15px 15px;
+        }
+
+        /* #CUSTOM PROPERTY */
+        :root {
+
+            --green-pigment: rgb(42, 126, 243);
+            --sea-green: #286cca;
+            --gainsboro: hsl(220, 13%, 91%);
+            --white_70: hsla(0, 0%, 100%, 0.7);
+            --white: hsl(0, 0%, 100%);
+            --black: hsl(0, 0%, 0%);
+
+            /*typography*/
+            --ff-spartan: 'League Spartan', sans-serif;
+            --fs-1: 3.6rem;
+            --fs-2: 2.4rem;
+            --fs-3: 2rem;
+            --fs-4: 1.8rem;
+            --fs-5: 1.7rem;
+
+            --fw-600: 600;
+            --fw-500: 500;
+
+            /*spacing*/
+            --section-padding: 35px;
+
+            /*shadow*/
+            --shadow-1: 0 1px 2px hsla(0, 0%, 0%, 0.2);
+            --shadow-2: 0 10px 15px -5px var(--carcoal_20);
+            --shadow-3: 0 10px 25px -3px var(--carcoal_20);
+            --shadow-4: 0 0 3px var(--carcoal_15);
+            --shadow-5: 0 20px 25px -5px var(--carcoal_10),
+                0 10px 10px -5px var(--carcoal_10);
+            /*border radius*/
+            --radius-16: 16px;
+            --radius-12: 12px;
+            --radius-6: 6px;
+            --radius-4: 4px;
+
+            /*transition*/
+            --transition: 0.25s ease;
+            --cubic-out: cubic-bezier(0.33, 0.85, 0.4, 0.96);
+        }
+
+        /*#RESET*/
+        *,
+        *::before,
+        *::after {
+            /* margin: 0;
+padding: 0; */
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a,
+        img,
+        span,
+        label,
+        input,
+        select,
+        button,
+        ion-icon {
+            display: block;
+        }
+
+        input,
+        select,
+        button {
+            background: none;
+            border: none;
+            font: inherit;
+        }
+
+        input,
+        select {
+            width: 100%;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        ion-icon {
+            pointer-events: none;
+        }
+
+        /*#REUSED STYLE*/
+
+        .container {
+            padding-inline: 15px;
+        }
+
+        .btn {
+            background-color: var(--green-pigment);
+            color: var(--white);
+            font-weight: var(--fw-500);
+            max-width: max-content;
+            padding: var(--padding, 12px 28px);
+        }
+
+        .btn:is(:hover, :focus) {
+            background-color: var(--sea-green);
+        }
+
+        .btn-secondary {
+            border-radius: 50px;
+        }
+
+        .btn-primary {
+            border-radius: var(--radius-6);
+        }
+
+        .section {
+            padding-block: var(--section-padding);
+        }
+
+        .section-title {
+            color: var(--oxford-blue);
+        }
+
+        .section-text {
+            line-height: 1.6;
+        }
+
+        .hero {
+            padding-block-start: 80px;
+        }
+
+        .hero-form-wrapper {
+            background-color: var(--white);
+            margin-block-start: -100px;
+            width: calc(100% - 10px);
+            margin-inline: auto;
+            border-radius: var(--radius-16);
+            overflow: hidden;
+            box-shadow: var(--shadow-2);
+        }
+
+        .form-tab {
+            padding: 16px;
+            border-block-end: 1px solid var(--gainsboro);
+            display: flex;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            color: var(--oxford-blue);
+            font-weight: var(--fw-500);
+            border-radius: var(--radius-6);
+            transition: var(--transition);
+        }
+
+        .tab-btn:is(:hover, :focus) {
+            background-color: var(--green-pigment);
+            color: aliceblue;
+        }
+
+        .tab-btn.active {
+            color: var(--white);
+            background-color: var(--green-pigment);
+        }
+
+        .hero-form {
+            display: grid;
+            gap: 25px;
+            padding: 25px;
+        }
+
+        .hero-form .input-wrapper {
+            position: relative;
+        }
+
+        .hero-form .input-wrapper:hover {
+            background-color: hsl(220, 13%, 91%);
+            border-radius: 15px;
+        }
+
+        .hero-form :is(.input-label, .input-field) {
+            color: var(--oxford-blue);
+        }
+
+        .hero-form .input-label {
+            font-weight: var(--fw-500);
+            margin-block-end: 10px;
+        }
+
+        .hero-form :is(.input-field, .dropdown-list) {
+            min-height: 40px;
+            border: 1px solid var(--gainsboro);
+            border-radius: var(--radius-4);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .hero-form :is(.input-field, .dropdown-list):focus {
+            border-color: var(--green-pigment);
+        }
+
+        .hero-form .input-wrapper ion-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(20%);
+            left: 15px;
+            color: var(--oxford-blue);
+            --ionicon-stroke-width: 40px;
+        }
+
+        .hero-form .input-field {
+            padding-inline: 45px 15px;
+        }
+
+        .hero-form .input-field::placeholder {
+            color: var(--manatee);
+        }
+
+        .hero-form .dropdown-list {
+            padding-inline: 15px;
+        }
+
+        .hero-form .btn {
+            max-width: 100%;
+        }
+
+
+        .searchpanel {
+            background-color: rgb(42, 126, 243);
+            border-radius: 15px;
+        }
+
+
+        @media (min-width: 640px) {
+
+            /*REUSED STYLE*/
+
+            /*HERO*/
+
+            .hero .container {
+                max-width: unset;
+            }
+
+            .hero-form-wrapper {
+                max-width: 600px;
+                margin-inline: auto;
+                background-color: unset;
+            }
+
+            .hero .form-tab,
+            .hero-form {
+                background-color: var(--white);
+            }
+
+            .hero .form-tab {
+                max-width: max-content;
+                border-top-left-radius: var(--radius-16);
+                border-top-right-radius: var(--radius-16);
+            }
+
+            .hero-form {
+                border-top-right-radius: var(--radius-16);
+            }
+
+            .service :is(.section-title, .section-text) {
+                text-align: center;
+            }
+
+            .service .section-text {
+                margin-block: 15px 60px;
+            }
+
+            .service-list {
+                display: grid;
+                gap: 30px;
+            }
+
+            .service-card {
+                text-align: center;
+            }
+
+            .service-card .card-icon {
+                background-color: var(--mint-cream);
+                width: 100px;
+                height: 100px;
+                display: grid;
+                place-items: center;
+                border-radius: 50%;
+                margin-inline: auto;
+            }
+
+            .service-card .card-icon ion-icon {
+                font-size: 30px;
+                color: var(--green-pigment);
+                --ionicon-stroke-width: 45px;
+            }
+
+            .service-card .card-title {
+                margin-block: 25px 12px;
+            }
+
+            .service-card .card-text {
+                line-height: 1.6;
+            }
+
+            /* new */
+            .section-title {
+                color: var(--oxford-blue);
+            }
+
+            .section-text {
+                line-height: 1.6;
+            }
+
+            .section {
+                padding-block: var(--section-padding);
+            }
+
+            .container {
+                padding-inline: 15px;
+            }
+
+
+            .container .service-list li {
+                list-style: none;
+            }
+
+            .service-list {
+                display: grid;
+                grid-template-columns: auto auto auto;
+            }
+
+
+            .background-about {
+                margin-top: 25px;
+                width: 100%;
+                /* display: flex; */
+                justify-content: center;
+                align-items: center;
+                background-image: url("/images/property images/prop_img1.1.jpg");
+                ;
+                background-size: cover;
+                background-position: center;
+                position: relative;
+                border-radius: 15px;
+                color: aliceblue;
+                font-family: monospace;
+            }
+
+            .background-about1 {
+                margin-top: 25px;
+                width: 100%;
+                /* display: flex; */
+                justify-content: center;
+                align-items: center;
+                background-image: url("/images/property images/prop_img3.1.jpg");
+                ;
+                background-size: cover;
+                background-position: center;
+                position: relative;
+                border-radius: 15px;
+                color: rgb(255, 255, 255);
+                font-family: monospace;
+            }
+
+            /*responsive for larger than 768px screen*/
+
+            @media (min-width: 768px) {
+
+                /*CUSTOM PROPERTY*/
+
+                :root {
+                    --fs-2: 3rem;
+                }
+
+                /*REUSED STYLE*/
+
+                .container,
+                .hero-form-wrapper {
+                    max-width: 700px;
+                }
+
+                .section-text {
+                    max-width: 55ch;
+                    margin-inline: auto;
+                }
+
+                /*HERO*/
+
+                .hero-content {
+                    text-align: left;
+                    padding-inline: calc(50% - 350px);
+                }
+
+                .hero-title {
+                    margin-inline: 0;
+                }
+
+                .hero-text {
+                    max-width: 50ch;
+                }
+
+                .hero-form {
+                    grid-template-columns: 1fr 1fr;
+                }
+
+            }
+
+            /*responsive for larger than 992px screen*/
+            @media (min-width: 992px) {
+
+                /*CUSTOM PROPERTY*/
+
+                :root {
+                    /*typography*/
+                    --fs-1: 4.8rem;
+
+                    /*spacing*/
+                    --section-padding: 40px;
+                }
+
+                /*REUSED STYLE*/
+
+                .container,
+                .hero-form-wrapper {
+                    max-width: 900px;
+                }
+
+                /*HEADER*/
+
+                .header>.container {
+                    gap: 30px;
+                }
+
+                .nav-toggle-btn {
+                    display: none;
+                }
+
+                .header .btn {
+                    margin-inline-start: 0;
+                }
+
+                /*HERO*/
+
+                .hero-content {
+                    padding-inline: calc(50% - 450px);
+                }
+
+                .hero-form {
+                    grid-template-columns: repeat(4, 1fr);
+                }
+            }
+
+            /*responsive for larger than 1200px screen*/
+            @media (min-width: 1200px) {
+
+                /*REUSED STYLE*/
+                .container,
+                .hero-form-wrapper {
+                    max-width: 1120px;
+                }
+
+                /*HERO*/
+                .hero-content {
+                    padding-inline: calc(50% - 560px);
+                }
+
+            }
+        }
+    </style>
+    <script>
+        function openLogIn() {
+            window.open("/login.html", "_self");
+
+        }
+
+        function showMessage() {
+            alert("Property Posted !!!");
+        }
+    </script>
+</head>
+
+<body>
+    <div class="background" id="home">
+        <div>
+            <button type="button" class="login-button" onclick="openLogIn()">Log In/ Sign Up</button>
+        </div>
+        <header>
+            <h1 style="margin-top: 53.456px;margin-bottom: 22.456px;">Apna Ghar</h1>
+        </header>
+        <div class="navbar" style="margin-left: 15px;">
+            <ul>
+                <li style="float: left;"><a rel="noopener" href="#home"><img src="/images/favicon/favicon1.ico"
+                            height="25px" alt="favicon"></a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li><a href="#sell">Sell</a></li>
+                <li><a href="#rent">Rent</a></li>
+                <li><a href="#buy">Buy</a></li>
+                <li><a class="active" href="#home">Home</a></li>
+            </ul>
+            <br>
+        </div>
+
+        <div class="advertise">
+            <p class="p1">Find a Home You'll Love</p>
+            <p class="p2">Choose From a Variety of Properties</p>
+        </div>
+        <br><br>
+    </div>
+    <main>
+
+        <div class="container1">
+            <div class="navbar2 space1" id="nav2">
+                <ul>
+                    <li style="float: left;"><a rel="noopener" href="#home"><img src="/images/favicon/favicon1.ico"
+                                height="25px" alt="favicon"></a></li>
+                    <li onclick="openLogIn()"><a href="#Home">Log In/ Sign Up</a></l1>
+                    <li><a href="/contact.html">Contact</a></li>
+                    <li><a href="#sell">Sell</a></li>
+                    <li><a href="#rent">Rent</a></li>
+                    <li><a href="#buy">Buy</a></li>
+                    <li><a href="#home">Home</a></li>
+                </ul>
+            </div>
+
+            <div class="title">
+                <p>Get Started With Exploring Different Properties !!!</p>
+            </div>
+
+            <br><br>
+            <div class="searchpanel">
+                <article class="article">
+                    <section class="section hero" aria-label="hero">
+                        <div class="container">
+                            <div class="hero-form-wrapper">
+                                <div class="form-tab">
+                                    <button type="button" class="tab-btn" data-tab-btn>Buy</button>
+                                    <button type="button" class="tab-btn" data-tab-btn>Sell</button>
+                                    <button type="button" class="tab-btn" data-tab-btn>Rent</button>
+                                </div>
+                                <form action="" class="hero-form">
+                                    <div class="input-wrapper">
+                                        <label for="search" class="input-label">Search : *</label>
+                                        <input type="search" name="search" id="search" placeholder="Search your home"
+                                            required class="input-field">
+                                        <ion-icon name="search-outline"></ion-icon>
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <label for="category" class="input-label">Select Categories:</label>
+                                        <select name="category" id="category" class="dropdown-list">
+                                            <option value="house">House</option>
+                                            <option value="apartment">Apartment</option>
+                                            <option value="offices">Offices</option>
+                                            <option value="townhome">Townhome</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <label for="min-price" class="input-label">Min Price :</label>
+                                        <select name="min-price" id="min-price" class="dropdown-list">
+                                            <option value="min price">Min Price</option>
+                                            <option value="500">10000</option>
+                                            <option value="1000">50000</option>
+                                            <option value="2000">100000</option>
+                                            <option value="3000">500000</option>
+                                            <option value="4000">1000000</option>
+                                            <option value="5000">5000000</option>
+                                            <option value="6000">10000000</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <label for="max-price" class="input-label">Max Price :</label>
+                                        <select name="max-price" id="max-price" class="dropdown-list">
+                                            <option value="max price">Max Price</option>
+                                            <option value="1000">50000</option>
+                                            <option value="2000">100000</option>
+                                            <option value="3000">500000</option>
+                                            <option value="4000">1000000</option>
+                                            <option value="5000">5000000</option>
+                                            <option value="6000">10000000</option>
+                                            <option value="6000">50000000</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Search now</button>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            </div>
+
+            <div class="option-bar">
+                <div class="property1 prop1 txt">
+                    <p>Buy Properties From Different Regions</p>
+                    <img src="/images/map.jpg" alt="Property image 1">
+                </div>
+                <div class="property1 prop2 txt">
+                    <p>Sell Properties At Your Price</p>
+                    <img src="/images/money.jpeg" alt="Property image 2">
+                </div>
+                <div class="property1 prop3 txt">
+                    <p>Rent Properties to Valid People</p>
+                    <img src="/images/people.png" alt="Property image 3" style="width: 100%;">
+                </div>
+            </div>
+
+
+            <div class="background-about">
+                <section class="section service" aria-label="service">
+
+                    <div class="container">
+
+                        <h2 class="h2 section-title">How It Works</h2>
+
+                        <p class="section-text">
+                            A great platform to buy, sell and rent your properties without any agent or commisions.
+                        </p>
+
+                        <ul class="service-list">
+
+                            <li>
+                                <div class="service-card">
+
+                                    <div class="card-icon">
+                                        <ion-icon name="home-outline"></ion-icon>
+                                    </div>
+
+                                    <h3 class="h3 card-title">Evaluate Property</h3>
+
+                                    <p class="card-text">
+                                        Evaluate different handpicked properties with the help of ratings and other
+                                        attributes that are provided in the website.
+                                    </p>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="service-card">
+
+                                    <div class="card-icon">
+                                        <ion-icon name="briefcase-outline"></ion-icon>
+                                    </div>
+
+                                    <h3 class="h3 card-title">Meeting with Agent</h3>
+
+                                    <p class="card-text">
+                                        Meet with the verified agent for further details about your desired property.
+                                    </p>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="service-card">
+
+                                    <div class="card-icon">
+                                        <ion-icon name="key"></ion-icon>
+                                    </div>
+
+                                    <h3 class="h3 card-title">Close the Deal</h3>
+
+                                    <p class="card-text">
+                                        After fulfilling your demands, when both the parties agree close the deal and
+                                        get your desired property.
+                                    </p>
+
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </section>
+            </div>
+
+
+            <div class="buy-section" id="buy">
+                <p class="buy-text">Buy From The Best Sellers Available</p>
+            </div>
+
+
+            <div class="background-about1">
+                <section class="section service" aria-label="service">
+
+                    <div class="container">
+
+                        <h2 class="h2 section-title">How Are Sellers Rated</h2>
+
+                        <p class="section-text">
+                            We pick the best sellers for you who are best in class in various aspects
+                        </p>
+
+                        <ul class="service-list">
+
+                            <li>
+                                <div class="service-card">
+                                    <h3 class="h3 card-title">High Response Rate</h3>
+
+                                    <p class="card-text">
+                                        We pick sellers for you who give you priority. Over 90% of our top sellers
+                                        respond to enquiries within the first 24 hours!
+                                    </p>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="service-card">
+                                    <h3 class="h3 card-title">Wide Coverage</h3>
+
+                                    <p class="card-text">
+                                        Sellers with a wide variety of properties are more likely to satisfy your
+                                        demands. More the options, better is your decision.
+                                    </p>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="service-card">
+                                    <h3 class="h3 card-title">Deals Closed</h3>
+
+                                    <p class="card-text">
+                                        We choose sellers who have previously closed deals with similar requirement as
+                                        you have. They'll understand your needs better.
+                                    </p>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="service-card">
+                                    <h3 class="h3 card-title">Rated & Reviewed</h3>
+
+                                    <p class="card-text">
+                                        Testimonials from genuine buyers are the best way to judge a seller. Better the
+                                        ratings, better will be your experience.
+                                    </p>
+
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </section>
+            </div>
+
+
+
+
+            <div class="buyer">
+
+                <div class="property prop1">
+                    <p class="para-head">2BHK Room, Chandigarh</p>
+                    <img src="/images/property images/property19.webp" alt="property prop19">
+                    <p class="para-card">Location : Chandigarh</p>
+                    <p class="para-card">Area : 4000 sqf</p>
+                    <p class="para-card">Price : Rs. 5000000</p>
+                    <p class="para-card">Rating : 3.8/5.0</p>
+                </div>
+                <div class="property prop2">
+                    <p class="para-head">3BHK Room, Gurgaon</p>
+                    <img src="/images/property images/property20.webp" alt="property prop20">
+                    <p class="para-card">Location : Gurgaon</p>
+                    <p class="para-card">Area : 8000 sqf</p>
+                    <p class="para-card">Price : Rs. 9000000</p>
+                    <p class="para-card">Rating : 4.1/5.0</p>
+                </div>
+                <div class="property prop3">
+                    <p class="para-head">3BHK House, Delhi</p>
+                    <img src="/images/property images/property21.webp" alt="property prop21">
+                    <p class="para-card">Location : Noida</p>
+                    <p class="para-card">Area : 7500 sqf</p>
+                    <p class="para-card">Price : Rs. 10000000</p>
+                    <p class="para-card">Rating : 3.9/5.0</p>
+                </div>
+                <div class="property prop4">
+                    <p class="para-head">1BHK Room, Chandigarh</p>
+                    <img src="/images/property images/property22.jpg" alt="property prop22">
+                    <p class="para-card">Location : Chandigarh</p>
+                    <p class="para-card">Area : 3000 sqf</p>
+                    <p class="para-card">Price : Rs. 1500000</p>
+                    <p class="para-card">Rating : 3.4/5.0</p>
+                </div>
+                <div class="property prop5">
+                    <p class="para-head">3BHK Room, Mumbai</p>
+                    <img src="/images/property images/property23.jpeg" alt="property prop23">
+                    <p class="para-card">Location : Thane</p>
+                    <p class="para-card">Area : 8000 sqf</p>
+                    <p class="para-card">Price : Rs. 12000000</p>
+                    <p class="para-card">Rating : 4.3/5.0</p>
+                </div>
+                <div class="property prop6">
+                    <p class="para-head">2BHK House, Kolkata</p>
+                    <img src="/images/property images/property24.jpg" alt="property prop24">
+                    <p class="para-card">Location : New Town</p>
+                    <p class="para-card">Area : 6500 sqf</p>
+                    <p class="para-card">Price : Rs. 9000000</p>
+                    <p class="para-card">Rating : 4.0/5.0</p>
+                </div>
+                <div class="property prop7">
+                    <p class="para-head">3BHK House, Bhopal</p>
+                    <img src="/images/property images/property25.jpeg" alt="property prop25">
+                    <p class="para-card">Location : Bhopal</p>
+                    <p class="para-card">Area : 10000 sqf</p>
+                    <p class="para-card">Price : Rs. 13000000</p>
+                    <p class="para-card">Rating : 4.2/5.0</p>
+                </div>
+                <div class="property prop8">
+                    <p class="para-head">4BHK Luxury House, Chennai</p>
+                    <img src="/images/property images/property26.jpeg" alt="property prop26">
+                    <p class="para-card">Location : Chennai</p>
+                    <p class="para-card">Area : 12000 sqf</p>
+                    <p class="para-card">Price : Rs. 20000000</p>
+                    <p class="para-card">Rating : 4.4/5.0</p>
+                </div>
+                <div class="property prop9">
+                    <p class="para-head">3BHK House, Hyderabad</p>
+                    <img src="/images/property images/property27.webp" alt="property prop27">
+                    <p class="para-card">Location : Hyderabad</p>
+                    <p class="para-card">Area : 9000 sqf</p>
+                    <p class="para-card">Price : Rs. 15000000</p>
+                    <p class="para-card">Rating : 4.0/5.0</p>
+                </div>
+            </div>
+
+            <div class="buy-section" id="rent">
+                <p class="buy-text">Rent Property According To Your Budget</p>
+            </div>
+
+            <div class="renter">
+                <div class="property prop1">
+                    <p class="para-head">3BHK House, Bangalore</p>
+                    <img src="/images/property images/property10.webp" alt="property prop10">
+                    <p class="para-card">Location : Bangalore</p>
+                    <p class="para-card">Area : 8000sqf</p>
+                    <p class="para-card">Price : Rs. 75000 per month</p>
+                    <p class="para-card">Rating : 4.2/5.0</p>
+                </div>
+                <div class="property prop2">
+                    <p class="para-head">2BHK House, Srinagar</p>
+                    <img src="/images/property images/prorperty11.webp" alt="property prop11">
+                    <p class="para-card">Location :Srinagar</p>
+                    <p class="para-card">Area : 6000 sqf</p>
+                    <p class="para-card">Price : Rs. 45000 per month</p>
+                    <p class="para-card">Rating : 4.0/5.0</p>
+
+                </div>
+                <div class="property prop3">
+                    <p class="para-head">3BHK House, Chandigarh</p>
+                    <img src="/images/property images/property12.jpg" alt="property prop12">
+                    <p class="para-card">Location : Chandigarh</p>
+                    <p class="para-card">Area : 8000 sqf</p>
+                    <p class="para-card">Price : Rs. 58000 per month</p>
+                    <p class="para-card">Rating : 4.4/5.0</p>
+                </div>
+                <div class="property prop4">
+                    <p class="para-head">2BHK House,Mumbai</p>
+                    <img src="/images/property images/property13.jpg" alt="property prop13">
+                    <p class="para-card">Location : Mumbai</p>
+                    <p class="para-card">Area : 8000 sqf</p>
+                    <p class="para-card">Price : Rs. 66000 per month</p>
+                    <p class="para-card">Rating : 4.3/5.0</p>
+                </div>
+                <div class="property prop5">
+                    <p class="para-head">2BHK House, Goa</p>
+                    <img src="/images/property images/property14.jpg" alt="proeperty prop14">
+                    <p class="para-card">Location : Goa</p>
+                    <p class="para-card">Area : 6500 sqf</p>
+                    <p class="para-card">Price : Rs. 50000 per month</p>
+                    <p class="para-card">Rating : 4.2/5.0</p>
+                </div>
+                <div class="property prop6">
+                    <p class="para-head">3BHK House, Agra</p>
+                    <img src="/images/property images/property15.jpg" alt="property prop15">
+                    <p class="para-card">Location :Agra</p>
+                    <p class="para-card">Area : 8500 sqf</p>
+                    <p class="para-card">Price : Rs. 69000 per month</p>
+                    <p class="para-card">Rating : 4.6/5.0</p>
+                </div>
+                <div class="property prop7">
+                    <p class="para-head">3BHK House, Chandigarh</p>
+                    <img src="/images/property images/property16.jfif" alt="property prop16">
+                    <p class="para-card">Location : Gurgaon</p>
+                    <p class="para-card">Area : 8000 sqf</p>
+                    <p class="para-card">Price : Rs. 67000 per month</p>
+                    <p class="para-card">Rating : 4.1/5.0</p>
+                </div>
+                <div class="property prop8">
+                    <p class="para-head">2BHK House, Delhi</p>
+                    <img src="/images/property images/property17.webp" alt="property prop17">
+                    <p class="para-card">Location : Delhi</p>
+                    <p class="para-card">Area : 6000 sqf</p>
+                    <p class="para-card">Price : Rs. 50000 per month</p>
+                    <p class="para-card">Rating : 4.3/5.0</p>
+                </div>
+                <div class="property prop9">
+                    <p class="para-head">1BHK House, Haryana</p>
+                    <img src="/images/property images/property18.jfif" alt="property prop18">
+                    <p class="para-card">Location : Haryana</p>
+                    <p class="para-card">Area : 500 sqf</p>
+                    <p class="para-card">Price : Rs. 20000 per month</p>
+                    <p class="para-card">Rating : 4.5/5.0</p>
+                </div>
+            </div>
+
+
+
+            <div class="buy-section" id="sell">
+                <p class="buy-text">Sell Property At A Valuable Price</p>
+            </div>
+
+
+            <div class="background-about">
+                <section class="section service" aria-label="service">
+
+                    <div class="container">
+
+                        <h2 class="h2 section-title">How Are Sellers Rated</h2>
+
+                        <p class="section-text">
+                            You can sell your property at your desired price if you follow these guidelines.
+                        </p>
+
+                        <ul class="service-list">
+
+                            <li>
+                                <div class="service-card">
+                                    <h3 class="h3 card-title">High Response Rate</h3>
+
+                                    <p class="card-text">
+                                        We pick sellers who gives the user priority. Over 90% of our top sellers
+                                        respond to enquiries within the first 24 hours!
+                                    </p>
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="service-card">
+                                    <h3 class="h3 card-title">Deals Closed</h3>
+
+                                    <p class="card-text">
+                                        We choose sellers who have previously closed deals with similar requirement as
+                                        most users have. So that they could understand the user's needs better.
+                                    </p>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="service-card">
+                                    <h3 class="h3 card-title">Rated & Reviewed</h3>
+
+                                    <p class="card-text">
+                                        Testimonials from genuine buyers are the best way to judge a seller. Better the
+                                        ratings, better will be the buyer experience.
+                                    </p>
+
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </section>
+            </div>
+
+            <h3 class="sellhead">Some Satisfied Sellers :</h3>
+            <div class="seller">
+
+                <div class="property prop1 clsell">
+                    <img src="/images/property images/property1.jpg" alt="Property prop1">
+                    <p class="para-card">
+                        Seller 172<br>
+                        2 BHK FLAT<br>
+                        Greater Noida<br>
+                        1Cr
+                    </p>
+                </div>
+                <div class="property prop2 clsell">
+                    <img src="/images/property images/property2.jpg" alt="property prop2">
+                    <p class="para-card">
+                        Seller 404<br>
+                        3 BHK FLAT <br>
+                        Saroji Nagar, Delhi<br>
+                        1.2Cr
+                    </p>
+                </div>
+                <div class="property prop3 clsell">
+                    <img src="/images/property images/property3.jpg" alt="property prop3">
+                    <p class="para-card">
+                        Seller 213<br>
+                        2 BHK FLAT<br>
+                        Jaipur<br>
+                        2Cr
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="sellhead">Upload Your Property Images :</h3>
+        <form id="pform" action="">
+            <input type="file" id="myFile" name="filename">
+            <button id="pbutton" type="button" onclick="showMessage()">Post Property</button>
+        </form>
+
+    </main>
+    <footer class="index-foot">
+        <h2>Browse top links to search your Home</h2>
+        <div class="foot-grid">
+            <div class="foot-grid1">
+                <h3 class="fh">People Also Search For</h3>
+                <p class="fp">Studio Apartments<br>
+                    Resale Flats<br>
+                    Ready to Move Flats<br>
+                    Flats for Sale<br>
+                    Duplex<br>
+                    Resale House</p>
+                <br>
+                <br>
+            </div>
+            <div class="foot-grid2">
+                <h3 class="fh">City Collections</h3>
+                <p class="fp">Affordable Projects<br>
+                    Townships<br>
+                    Ready to Move Projects<br>
+                    Properties for sale</p>
+                <br>
+                <br>
+            </div>
+            <div class="foot-grid3">
+                <h3 class="fh">Filter Your Search</h3>
+                <p class="fp">Penthouse<br>
+                    Affordable House for sale<br>
+                    House for sale without brokerage<br>
+                    Rowhouse<br>
+                    Under Construction Apartments</p>
+                <br>
+                <br>
+            </div>
+        </div>
+        <p id="cop">Copyright &copy; 2022 ApnaGhar.com</p>
+    </footer>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

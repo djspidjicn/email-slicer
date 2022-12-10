@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apna Ghar - Choose Your Own Ghar</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon/favicon1.ico">
+</head>
+<style>
+    /* @import url('https://fonts.googleapis.com/css2?family=Nunito+sans:wght@200&display=swap');
+    :root{
+        --font-style: "Nunito sans",sans-serif;
+    } */
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        background-image: url("/images/property_background.jpg");
+        background-size: cover;
+        
+        /* font-family: var(--font-style);         */
+        font-family: monospace;
+    }
+
+    .backlayer {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.498);
+    }
+
+    .login-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 30%;
+        padding: 40px;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        box-shadow: 15px 25px #286cca;
+        border-radius: 10px;
+    }
+
+    .login-box h2 {
+        margin: 0 0 30px;
+        padding: 0;
+        color: #286cca;
+        text-align: center;
+    }
+
+    .login-box .user-box input {
+        position: relative;
+        width: 100%;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #286cca;
+        margin-bottom: 30px;
+        border: none;
+        border-bottom: 1px solid #286cca;
+        outline: none;
+        background: transparent;
+    }
+
+    .login-box .user-box label {
+        position: relative;
+        left: 0%;
+        top: -60px;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        pointer-events: none;
+        transition: .5s;
+    }
+
+    .login-box .user-box input:focus-label,
+    .login-box .user-box input:valid-label {
+        top: -85px;
+        left: 0;
+        color: #286cca;
+        font-size: 12px;
+    }
+
+    #submit {
+        padding: 10px 20px;
+        color: #4e90ec;
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: .5s;
+        letter-spacing: 4px;
+        border: 1px solid #286cca;
+        margin: auto;
+
+    }
+
+    #submit:hover {
+        background: #286cca;
+        color: #fff;
+        border-radius: 5px;
+        /* Glow Effect
+        
+        box-shadow: 0 0 5px #286cca, 0 0 25px #286cca, 0 0 50px #286cca, 0 0 100px #286cca; */
+
+    }
+
+    .button-form {
+        display: flex;
+        flex-direction: row;
+        margin-top: 20px;
+    }
+
+    #register {
+        font-size: 14px;
+        text-decoration: none;
+        color: #286cca;
+        margin: auto;
+        width: 60%;
+        text-align: center;
+    }
+
+    #register a {
+        margin: auto;
+        color: #286cca;
+        text-decoration: none;
+    }
+
+    @media (max-width: 900px) {
+        .login-box{
+            width: 50%;
+        }
+    }
+    @media (max-width: 790px) {
+        .login-box{
+            width: 60%;
+        }
+    }
+    @media (max-width: 450px) {
+        .login-box{
+            width: 80%;
+        }
+        #register{
+            width: 50px;
+        }
+    }
+
+
+
+</style>
+
+
+<script>
+    function gotoHome(){
+        let a=document.getElementById("pass").value;
+        let b=document.getElementById("un").value;
+        if(b==""){
+            alert("Please enter username");
+        }
+        else{
+            if(a==""){
+            alert("Please enter password");
+            }
+            else{
+                if(a=="1234"){
+                    window.open("/index1.html", "_self");
+                }
+                else{
+                    alert("Wrong Password");
+                }
+            }
+        }
+    }
+</script>
+
+
+<body>
+    <div class="backlayer">
+        <div class="login-box">
+            <h2>LOGIN</h2>
+            <form>
+                <div class="user-box">
+                    <input id="un" type="text" name="" placeholder="username">
+                    <!-- <label>username</label> -->
+                </div>
+                <div class="user-box">
+                    <input id="pass" type="password" name="" placeholder="password">
+                    <!-- <label>password</label> -->
+                </div>
+
+                <div class="button-form">
+
+                    <button type="button" id="submit" onclick="gotoHome()">submit</button>
+
+                    <div id="register">
+                        don't have an account?
+                        <a href="/index.html">Register</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
